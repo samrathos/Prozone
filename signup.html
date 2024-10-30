@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProZone - Sign Up</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 05px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            color: #1a1a2e;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Signup Section */
+        .signup-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 30px 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .signup-section h2 {
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        .signup-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .signup-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #f97a90;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Password Requirements */
+        .password-requirements {
+            font-size: 0.9em;
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ProZone</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Create Your ProZone Account</h1>
+        <p>Join us to track your progress, achieve your goals, and earn rewards!</p>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <h2>Sign Up</h2>
+        <form>
+            <label for="college-id">College ID</label>
+            <input type="text" id="college-id" placeholder="Enter your college ID" required>
+            
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            
+            <label for="new-password">Set a New Password</label>
+            <input type="password" id="new-password" placeholder="Create a password" required>
+            <div class="password-requirements">
+                Password must be at least 8 characters long and include a mix of letters and numbers.
+            </div>
+            
+            <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        <div class="info">
+            <p>Already have an account? <a href="index.html" style="color: #e94560;">Login here</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ProZone. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

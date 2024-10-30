@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProZone - Student Profile</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+        }
+
+        /* Container */
+        .profile-container {
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;margin-top: 30px;
+        }
+
+        /* Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .profile-pic-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+        .profile-info {
+            flex-grow: 1;
+        }
+        .profile-info h1 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+        }
+        .profile-info p {
+            color: #666;
+        }
+
+        /* Achievement Tags */
+        .achievements {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .achievement-icon {
+            font-size: 1.5em;
+            position: relative;
+            cursor: pointer;
+        }
+        .tooltip {
+            position: absolute;
+            top: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .achievement-icon:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Progress Report */
+        .progress-section {
+            margin-top: 20px;
+        }
+        .progress-section h2 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        .subject-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .subject-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .subject-name {
+            flex-basis: 30%;
+        }
+        .progress-bar-container {
+            flex-basis: 60%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #e94560;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        .subject-progress .score {
+            flex-basis: 10%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Assessment Marks */
+        .assessment-section {
+            margin-top: 20px;
+        }
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .assessment-table th,
+        .assessment-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .assessment-table th {
+            background-color: #1a1a2e;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;width: 100%;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #e94560;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .profile-btn {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ProZone</div>
+        <nav class="nav-links">
+            <a href="#analytics">Analytics</a>
+            <a href="lb.html">Leaderboards</a>
+            <a href="#goals">Goals</a>
+        </nav>
+         <a href="profile.html"><button class="profile-btn" >
+            P
+        </button></a></div>
+    </header>
+
+    <div class="profile-container">
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-pic-large"><img src="ABKP.jpg"
+                 style="width: 80px;border-radius: 50%;"></div>
+            <div class="profile-info">
+                <h1>Abhishek Kumar Pundir</h1>
+                <p>Top Performer, Computer Science Major</p>
+                <div class="achievements">
+                    <span class="achievement-icon">
+                        🏆
+                        <div class="tooltip">
+                            <strong>Overachiever</strong><br>
+                            Completed multiple modules ahead of schedule.
+                        </div>
+                    </span>
+                    <span class="achievement-icon">
+                        ⚡
+                        <div class="tooltip">
+                            <strong>Lightning Fast</strong><br>
+                            Quickly completed recent modules.
+                        </div>
+                    </span>
+                    <span class="achievement-icon">
+                        💪
+                        <div class="tooltip">
+                            <strong>Persistent</strong><br>
+                            Showed high tenacity in challenging subjects.
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Report -->
+        <div class="progress-section">
+            <h2>Subject Progress</h2>
+            <div class="subject-progress">
+                <div class="subject-item">
+                    <div class="subject-name">Mathematics</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <div class="score">85%</div>
+                </div>
+                <div class="subject-item">
+                    <div class="subject-name">Physics</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 70%;"></div>
+                    </div>
+                    <div class="score">70%</div>
+                </div>
+                <div class="subject-item">
+                    <div class="subject-name">Chemistry</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 92%;"></div>
+                    </div>
+                    <div class="score">92%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Marks -->
+        <div class="assessment-section">
+            <h2>Assessment Marks</h2>
+            <table class="assessment-table">
+                <tr>
+                    <th>Subject</th>
+                    <th>CA 1</th>
+                    <th>CA 2</th>
+                    <th>Midterm</th>
+                    <th>Final</th>
+                </tr>
+                <tr>
+                    <td>MTH</td>
+                    <td>88</td>
+                    <td>92</td>
+                    <td>87</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td>PHY</td>
+                    <td>75</td>
+                    <td>80</td>
+                    <td>78</td>
+                    <td>85</td>
+                </tr>
+                <tr>
+                    <td>MEC</td>
+                    <td>90</td>
+                    <td>85</td>
+                    <td>88</td>
+                    <td>95</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

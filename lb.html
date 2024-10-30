@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProZone - Leaderboards</title>
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            text-decoration: none;
+            color: #e94560;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Leaderboard Header */
+        .leaderboard-header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Leaderboard List - Vertical Stack */
+        .leaderboard {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Profile Link Styling */
+        .rank-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: visible;
+            transition: transform 0.3s ease;
+        }
+        .rank-item:hover {
+            transform: scale(1.05);
+        }
+
+        .rank {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1a1a2e;
+            width: 50px;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+        .profile-info {
+            flex-grow: 1;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 4px;
+            height: 8px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        /* Emoji/Sticker and Tooltip Styling */
+        .achievement-icon {
+            position: relative;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .tooltip {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 10px); /* Positioned to the right */
+            transform: translateY(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            pointer-events: none;
+            z-index: 10;
+        }
+        /* Tooltip Position Adjustments */
+        .achievement-icon:hover .tooltip{
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Media Query for Small Screens */
+        @media (max-width: 768px) {
+            .tooltip {
+                top: calc(100% + 10px); /* Move below icon on small screens */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #e94560;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Profile Button */
+        .profile-container {
+            position: relative;
+        }
+        .profile-btn {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 100;
+            min-width: 150px;
+        }
+        .dropdown a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #f4f4f4;
+        }
+
+
+        /* Dropdown Show */
+        .dropdown.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- <nav class="navbar">
+        <div class="nav-title">
+            <h1>ProZone</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dash.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="ana.html">Analytics</a>
+        </div>
+    </nav> -->
+    <header>
+        <div class="logo">ProZone</div>
+        <nav class="nav-links">
+            <a href="dash.html">Dashboard</a>
+            <a href="lb.html">Leaderboards</a>
+            <a href="#goals">Goals</a>
+        </nav>
+        <div class="profile-container" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button class="profile-btn">P</button>
+            <div class="dropdown" id="profileDropdown">
+                <a href="#settings">⚙️ Settings</a>
+                <a href="index.html">🚪 Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Leaderboard Header -->
+        <div class="leaderboard-header">
+            <h1>Top Performers</h1>
+            <p>See where you rank among your peers based on course completion progress.</p>
+        </div>
+
+        <!-- Leaderboard List -->
+        <div class="leaderboard">
+            <!-- Sample Ranking Items -->
+            <a href="profile.html?id=1" class="rank-item" data-progress="95">
+                <div class="rank">1</div>
+                <img src="SKG.jpg" alt="Profile picture of Sahil Kumar Gupta" class="profile-pic">
+                <div class="profile-info">
+                    <h3>Sahil Kumar Gupta</h3>
+                    <p>Progress: 95%</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <!-- Achievement Icon with Tooltip -->
+                <span class="achievement-icon">
+                    🏆
+                    <div class="tooltip">
+                        <strong>Overachiever</strong><br>
+                        Completed multiple modules ahead of schedule.
+                    </div>
+                </span>
+            </a>
+
+            <a href="profile2.html" class="rank-item" data-progress="88">
+                <div class="rank">2</div>
+                <img src="ABKP.jpg" alt="Profile picture of Alex Johnson" class="profile-pic">
+                <div class="profile-info">
+                    <h3>Abhishek Kumar Pundir</h3>
+                    <p>Progress: 88%</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 88%;"></div>
+                    </div>
+                </div>
+                <span class="achievement-icon">
+                    ⚡
+                    <div class="tooltip">
+                        <strong>Lightning Fast</strong><br>
+                        Completed the latest module in record time.
+                    </div>
+                </span>
+            </a>
+
+            <a href="profile.html?id=3" class="rank-item" data-progress="82">
+                <div class="rank">3</div>
+                <img src="ag.jpg" alt="Profile picture of Maria Garcia" class="profile-pic">
+                <div class="profile-info">
+                    <h3>Amith George</h3>
+                    <p>Progress: 82%</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 82%;"></div>
+                    </div>
+                </div>
+                <span class="achievement-icon">
+                    💪
+                    <div class="tooltip">
+                        <strong>Determined</strong><br>
+                        Building strong fundamentals.
+                    </div>
+                </span>
+            </a>
+            <a href="profile.html?id=3" class="rank-item" data-progress="82">
+                <div class="rank">3</div>
+                <img src="mypic2.jpg" alt="Profile picture of Maria Garcia" class="profile-pic">
+                <div class="profile-info">
+                    <h3>Samrath Thukral(YOU)
+                    </h3>
+                    <p>Progress: 50%</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <span class="achievement-icon">
+                    🐢
+                    <div class="tooltip">
+                        <strong>Slow and Steady.</strong><br>
+                        Persistently working through challenging modules.
+                    </div>
+                </span>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+
+        // JavaScript for Profile Dropdown
+        function showDropdown() {
+            document.getElementById('profileDropdown').classList.add('show');
+        }
+
+        function hideDropdown() {
+            document.getElementById('profileDropdown').classList.remove('show');
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('infoModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+
+</body>
+</html>

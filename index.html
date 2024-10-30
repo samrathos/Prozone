@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProZone - Unlock Your Potential</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 05px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?success,achievement') center/cover no-repeat;
+            color: #fff; height: 200px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Authentication Section */
+        .auth-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 50px 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .auth-section h2 {
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        .auth-section label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .auth-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #f97a90;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #e94560;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        #las{margin-top: 20px;}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ProZone</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to ProZone</h1>
+        <p>Transform your journey with insights, achievements, and progress tracking.</p>
+    </section>
+
+    <!-- Authentication Section -->
+    <section class="auth-section">
+        <h2>Login to Your Account</h2>
+        <form onsubmit="return false;">
+            <label for="college-id">College ID</label>
+            <input type="text" id="college-id" placeholder="Enter your college ID" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="button" class="btn-primary" onclick="showLoading()">Login</button>
+        </form>
+        <div class="loading-spinner" id="loadingSpinner"></div>
+        <div class="info">
+            <p>New to ProZone? <a href="signup.html" style="color: #e94560;">Sign up here</a></p>
+            <div id="las">ProZone helps you track your progress, set goals, and earn rewards along the way. Join us today!</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ProZone. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for Loading Animation
+        function showLoading() {
+            document.getElementById('loadingSpinner').style.display = 'block'; // Show spinner
+            setTimeout(function() {
+                location.href = 'dash.html'; // Redirect to homepage after 1 second
+            }, 1000); // Adjust delay as needed
+        }
+    </script>
+
+</body>
+</html>
