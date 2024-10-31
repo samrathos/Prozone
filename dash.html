@@ -126,9 +126,9 @@
 
         /* Course Section */
         .courses {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
+            float: left;
+            width: 600px;
+            margin: 20px;margin-left: 15px;
         }
         .course-card {
             background-color: #fff;
@@ -198,7 +198,7 @@
         .progress-summary {
             width: 80%;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 320px auto;
             text-align: center;
         }
         .progress-summary h2 {
@@ -234,7 +234,89 @@
             border-radius: 8px;
             margin: 20px auto;
         }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1;
+            
+        }
+        .section h2 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
 
+        /* Journal Entry Section */
+        .journal {
+            display: flex;
+            flex-direction: column;
+            height: 200px;width: 100px;
+        }
+        .journal textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 100px;
+            resize: both;
+        }
+        .journal button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: none;
+            background-color: #e94560;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Health and Social Section */
+        .health-social div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        .health-social div h3 {
+            color: #1a1a2e;
+        }
+        
+        /* Suggestions Feed */
+        .feed-entry {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .feed-entry p {
+            margin-bottom: 5px;
+        }
+        .feed-entry .solution {
+            font-style: italic;
+            color: #555;
+        }
+        .reminders{border: solid white;
+            background-color: white;border-radius: 10px;
+            height: 200px;margin-left: 50px;
+            margin-top: 20px;padding: 20px;
+        }
+        #toprow{display:flex;
+            flex-direction: row;gap: 30px;background-color: #a8979a;}
+        .sectionjournal{width: 500px;
+            background-color: white;
+            height: 200px;margin-left: 150px;
+        margin-top: 20px;padding: 20px;border-radius: 10px;}
     </style>
 </head>
 <body>
@@ -270,6 +352,7 @@
     </div>
     
     <!-- Current Courses Section -->
+    <div id="toprow">
     <section class="courses">
         <h2 id="yes">Courses</h2>
 
@@ -326,6 +409,54 @@
             <a href="https://www.codetantra.com" class="course-link" target="_blank">*Visit CodeTantra for more resources</a>
         </a>
     </section>
+    <!-- Reminders Section -->
+    <section class="reminders">
+        <h2>Reminders</h2>
+        <input type="text" id="reminderInput" placeholder="Add a reminder..." />
+        <button onclick="addReminder()">Add</button>
+        <ul class="reminder-list" id="reminderList"></ul>
+    </section>
+    <!-- Journal Section -->
+    <div class="sectionjournal">
+        <h2>Journal</h2>
+        <textarea placeholder="Write your thoughts here..."></textarea>
+        <button>Save Entry</button>
+    </div>
+    </div>
+
+    
+    <div class="section health-social">
+        <h2>Health & Social Scores</h2>
+        <div>
+            <h3>Health</h3>
+            <p>Current Level: 72%</p>
+        </div>
+        <div>
+            <h3>Social</h3>
+            <p>Current Level: 60%</p>
+        </div>
+        <div>
+            <h3>Mental Wellbeing</h3>
+            <p>Current Level: 80%</p>
+        </div>
+    </div> 
+
+    <!-- Suggestions Feed -->
+    <div class="section feed">
+        <h2>Suggestions Feed</h2>
+        <div class="feed-entry">
+            <p>Weak Area: Time Management</p>
+            <p class="solution">Suggested Solution: Use a weekly planner to allocate specific hours for each subject and take short breaks to avoid burnout.</p>
+        </div>
+        <div class="feed-entry">
+            <p>Weak Area: Consistency in Exercise</p>
+            <p class="solution">Suggested Solution: Try incorporating a 15-minute workout session at the start of each day to build habit consistency.</p>
+        </div>
+        <div class="feed-entry">
+            <p>Weak Area: Social Engagement</p>
+            <p class="solution">Suggested Solution: Join a study group or extracurricular activity to foster connections and social interaction.</p>
+        </div>
+    </div>
 
     <!-- Progress Summary Section -->
     <section class="progress-summary">
@@ -350,10 +481,10 @@
         </div>
     </section>
 
-    <!-- Motivational Quote Section -->
+
     <section class="quote-section">
         <p>"Your only limit is you. Be brave and fearless."</p>
-    </section>
+    </section> 
 
     <script>
         function showDropdown() {
@@ -363,6 +494,19 @@
         function hideDropdown() {
             document.getElementById('profileDropdown').classList.remove('show');
         }
+        // Reminders Functionality
+        function addReminder() {
+            const reminderInput = document.getElementById("reminderInput");
+            const reminderText = reminderInput.value.trim();
+            if (reminderText) {
+                const reminderList = document.getElementById("reminderList");
+                const listItem = document.createElement("li");
+                listItem.textContent = reminderText;
+                reminderList.appendChild(listItem);
+                reminderInput.value = "";
+            }
+        }
+
     </script>
 </body>
 </html>

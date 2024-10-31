@@ -18,33 +18,38 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0px;
+            padding: 20px;
         }
 
-        /* Container */
+        /* Profile Container */
         .profile-container {
-            max-width: 900px;
+            max-width: 800px;
             width: 100%;
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;margin-top: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-top: 20px;
         }
 
-        /* Header */
+        /* Profile Header */
         .profile-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            border-bottom: 2px solid #e94560;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            gap: 15px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
         }
         .profile-pic-large {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background-color: #ddd;
+            overflow: hidden;
+        }
+        .profile-pic-large img {
+            width: 100%;
+            height: auto;
         }
         .profile-info {
             flex-grow: 1;
@@ -52,19 +57,51 @@
         .profile-info h1 {
             font-size: 1.8em;
             color: #1a1a2e;
+            margin-bottom: 5px;
         }
         .profile-info p {
             color: #666;
+            font-size: 1.1em;
         }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            justify-content: center;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            font-size: 1.4em;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            transform: scale(1.15);
+        }
+        .social-links .facebook { background-color: #4267B2; }
+        .social-links .twitter { background-color: #1DA1F2; }
+        .social-links .instagram { background-color: #E1306C; }
+        .social-links .linkedin { background-color: #2867B2; }
+        .social-links .coshira { background-color: #e94560; }
 
         /* Achievement Tags */
         .achievements {
             display: flex;
             gap: 10px;
-            margin: 10px 0;
+            margin-top: 15px;
         }
         .achievement-icon {
-            font-size: 1.5em;
+            font-size: 1.2em;
             position: relative;
             cursor: pointer;
         }
@@ -75,10 +112,10 @@
             transform: translateX(-50%);
             background-color: #333;
             color: #fff;
-            padding: 8px;
-            border-radius: 5px;
+            padding: 5px;
+            border-radius: 4px;
             font-size: 0.85em;
-            width: 200px;
+            width: 180px;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease;
@@ -90,7 +127,7 @@
             visibility: visible;
         }
 
-        /* Progress Report */
+        /* Progress Section */
         .progress-section {
             margin-top: 20px;
         }
@@ -148,77 +185,18 @@
             background-color: #1a1a2e;
             color: white;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #1a1a2e;
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;width: 100%;
-        }
-        .logo {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #e94560;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1em;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: #e94560;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .profile-btn {
-            background-color: #e94560;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
+        img{width:40px;border-radius: 100%;}
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">ProZone</div>
-        <nav class="nav-links">
-            <a href="#analytics">Analytics</a>
-            <a href="lb.html">Leaderboards</a>
-            <a href="#goals">Goals</a>
-        </nav>
-         <a href="profile.html"><button class="profile-btn" >
-            P
-        </button></a></div>
-    </header>
-
     <div class="profile-container">
-
         <!-- Profile Header -->
         <div class="profile-header">
-            <div class="profile-pic-large"><img src="ABKP.jpg"
-                 style="width: 80px;border-radius: 50%;"></div>
+            <div class="profile-pic-large"><img src="ABKP.jpg" alt="Profile Picture"></div>
             <div class="profile-info">
                 <h1>Abhishek Kumar Pundir</h1>
                 <p>Top Performer, Computer Science Major</p>
+                <!-- Achievement Tags -->
                 <div class="achievements">
                     <span class="achievement-icon">
                         🏆
@@ -245,7 +223,15 @@
             </div>
         </div>
 
-        <!-- Progress Report -->
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank" class="twitter" title="Twitter"><img src="x.webp"></a>
+            <a href="https://instagram.com" target="_blank" class="instagram" title="Instagram"><img src="insta.jpg"></a>
+            <a href="https://linkedin.com" target="_blank" class="linkedin" title="LinkedIn"><img src="liin.webp"></a>
+            <a href="https://coshira.com" target="_blank" class="coshira" title="Coshira">C</a>
+        </div>
+
+        <!-- Progress Section -->
         <div class="progress-section">
             <h2>Subject Progress</h2>
             <div class="subject-progress">
@@ -285,30 +271,28 @@
                     <th>Final</th>
                 </tr>
                 <tr>
-                    <td>MTH</td>
+                    <td>Mathematics</td>
                     <td>88</td>
                     <td>92</td>
                     <td>87</td>
                     <td>90</td>
                 </tr>
                 <tr>
-                    <td>PHY</td>
+                    <td>Physics</td>
                     <td>75</td>
                     <td>80</td>
                     <td>78</td>
                     <td>85</td>
                 </tr>
                 <tr>
-                    <td>MEC</td>
+                    <td>Chemistry</td>
                     <td>90</td>
-                    <td>85</td>
-                    <td>88</td>
-                    <td>95</td>
+                    <td>94</td>
+                    <td>91</td>
+                    <td>93</td>
                 </tr>
             </table>
         </div>
-
     </div>
-
 </body>
 </html>
