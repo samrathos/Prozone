@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProZone - Unlock Your Potential</title>
+    <style>
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #e94560;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Profile Button */
+        .profile-container {
+            position: relative;
+        }
+        .profile-btn {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 100;
+            min-width: 150px;
+        }
+        .dropdown a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Dropdown Show */
+        .dropdown.show {
+            display: block;
+        }
+
+        /* Profile Overview Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 20px;
+        }
+        .profile-info h2 {
+            color: #000000;
+        }
+        #yes{
+            margin-bottom: 20px;
+        }
+        .profile-info p {
+            color: #8e5b5b;
+        }
+
+        /* Course Section */
+        .courses {
+            float: left;
+            width: 600px;
+            margin: 20px;margin-left: 15px;
+        }
+        .course-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            color: #1a1a2e;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+            text-decoration: none;
+            overflow: hidden;
+        }
+        .course-card:hover {
+            background-color: #1a1a2e;
+            color: #fff;
+            transform: translateY(-10px);
+        }
+        .course-card:hover .test-info {
+            bottom: 0;
+        }
+        .course-card h3 {
+            color: inherit;
+        }
+        .progress-bar-container {
+            position: relative;
+            width: 80%;
+            height: 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        /* Upcoming Test Info */
+        .test-info {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9em;
+            text-align: center;
+            transition: bottom 0.3s ease;
+            border-radius: 0 0 8px 8px;
+        }
+
+/* Reminder Styles */
+.reminders input, .reminders button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Journal Section */
+.sectionjournal textarea {
+    width: 100%;
+    height: 100px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Toggleable Sections (Health and Social Logging) */
+.hidden {
+    display: none;
+}
+
+.tracking-section h2, .feed h2 {
+    color: #007bff;
+}
+
+.track-item {
+    margin-bottom: 1rem;
+}
+
+.track-item h3 {
+    margin: 0;
+    color: #444;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.reminder-list li {
+    list-style: none;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.feed-entry {
+    margin-bottom: 1rem;
+}
+
+.feed-entry p {
+    margin: 0.5rem 0;
+}
+
+.solution {
+    font-style: italic;
+    color: #007bff;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ProZone</div>
+        <nav class="nav-links">
+            <a href="#analytics">Analytics</a>
+            <a href="lb.html">Leaderboards</a>
+            <a href="#goals">Goals</a>
+        </nav>
+        <div class="profile-container" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button class="profile-btn">P</button>
+            <div class="dropdown" id="profileDropdown">
+                <a href="#settings">⚙️ Settings</a>
+                <a href="index.html">🚪 Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Header Section -->
+    <div class="profile-header">
+        <div class="profile-pic"><img src="mypic2.jpg" class="profile-pic"></div>
+        <div class="profile-info">
+            <h2 id="no">Samrath Thukral</h2>
+            <p>Btech. CSE(AI/ML)</p>
+            <p>Joined: October 2024</p>
+            <p>Semester: 1</p>
+        </div>
+    </div>
+    
+    <!-- Current Courses Section -->
+    <section class="courses">
+        <h2 id="yes">Courses</h2>
+
+        <a href="ana.html" class="course-card">
+            <div>
+                <h3>Data Structures</h3>
+                <p>Progress: 75%</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+            </div>
+            <div class="test-info">
+                Upcoming Test: Nov 15 - Stacks & Queues
+            </div>
+        </a>
+
+        <a href="analytics-machine-learning.html" class="course-card">
+            <div>
+                <h3>Machine Learning Basics</h3>
+                <p>Progress: 40%</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="test-info">
+                Upcoming Test: Nov 20 - Regression Analysis
+            </div>
+        </a>
+
+        <a href="analytics-database.html" class="course-card">
+            <div>
+                <h3>Database Management</h3>
+                <p>Progress: 60%</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="test-info">
+                Upcoming Test: Nov 25 - SQL Queries
+            </div>
+        </a>
+
+        <a href="python.html" class="course-card">
+            <div>
+                <h3>Python Programming*</h3>
+                <p>Progress: 80%</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="test-info">
+                Upcoming Test: Nov 30 - Functions and Modules
+            </div>
+            <a href="https://www.codetantra.com" class="course-link" target="_blank">*Visit CodeTantra for more resources</a>
+        </a>
+    </section>
+
+    <!-- Reminders Section -->
+    <section class="reminders">
+        <h2>Reminders</h2>
+        <input type="text" id="reminderInput" placeholder="Add a reminder..." />
+        <button onclick="addReminder()">Add</button>
+        <ul class="reminder-list" id="reminderList"></ul>
+    </section>
+
+    <!-- Journal Section -->
+    <div class="sectionjournal">
+        <h2>Journal</h2>
+        <textarea placeholder="Write your thoughts here..."></textarea>
+        <button>Save Entry</button>
+    </div>
+
+    <!-- Health and Social Tracking Section with Toggle -->
+    <section class="tracking-section">
+        <button onclick="toggleVisibility('healthSection')">Show/Hide Health Tracking</button>
+        <div id="healthSection" class="hidden">
+            <h2>Health Tracking</h2>
+            <div class="track-item">
+                <h3>Gym Progress</h3>
+                <p>Workout Level: Advanced</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="track-item">
+                <h3>Yoga</h3>
+                <p>Session Completion: 30/50</p>
+            </div>
+        </div>
+
+        <button onclick="toggleVisibility('socialSection')">Show/Hide Social Tracking</button>
+        <div id="socialSection" class="hidden">
+            <h2>Social Tracking</h2>
+            <div class="track-item">
+                <h3>Social Engagement</h3>
+                <p>Activities Completed: 5 this week</p>
+            </div>
+            <div class="track-item">
+                <h3>Mental Wellbeing</h3>
+                <p>Current Level: 80%</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suggestions Feed -->
+    <div class="section feed">
+        <h2>Suggestions Feed</h2>
+        <div class="feed-entry">
+            <p>Weak Area: Time Management</p>
+            <p class="solution">Suggested Solution: Use a weekly planner to allocate specific hours for each subject and take short breaks to avoid burnout.</p>
+        </div>
+        <!-- More feed entries... -->
+    </div>
+
+    <script>
+        function showDropdown() {
+            document.getElementById('profileDropdown').classList.add('show');
+        }
+
+        function hideDropdown() {
+            document.getElementById('profileDropdown').classList.remove('show');
+        }
+        
+        function toggleVisibility(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+
+        // Reminders Functionality
+        function addReminder() {
+            const reminderInput = document.getElementById("reminderInput");
+            const reminderText = reminderInput.value.trim();
+            if (reminderText) {
+                const reminderList = document.getElementById("reminderList");
+                const listItem = document.createElement("li");
+                listItem.textContent = reminderText;
+                reminderList.appendChild(listItem);
+                reminderInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
