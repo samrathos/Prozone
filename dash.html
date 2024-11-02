@@ -3,373 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProZone - Unlock Your Potential</title>
+    <title>ProZone</title>
     <style>
- /* Base Styles */
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fa;
-            color: #333;
-        }
+        body { font-family: Arial, Helvetica, sans-serif; background-color: aliceblue; }
+        #div1 { display: flex; flex-direction: row; gap: 400px; align-items: center; background: linear-gradient(45deg, #121212, #282828); padding: 10px; }
+        #logo { color: #e94560; }
+        #navbar { display: flex; gap: 40px; }
+        #probtn { border-radius: 50%; width: 40px; height: 40px; border-style: none; background-color: #e94560; margin-left: 150px; cursor: pointer; position: relative; }
+        a { text-decoration: none; }
+        .navlnks { color: white; transition: 0.5s; }
+        .navlnks:hover { color: #e94560; }
+        #div2 { margin-top: 40px; }
+        #coursebox { float: left; width: 600px; border-radius: 20px; background: linear-gradient(45deg, #201e1e, #333); padding: 20px; display: block; }
+        .courses { color: white;transition: 0.5s; }
+        .coursecards { margin-top: 50px; border: #121212 solid; border-radius: 10px; padding: 10px; background-color: #121212; transition: 0.5s; }
+        .coursecards:hover { transform: translateY(-10px);}
+        .coursecards:hover .courses{ color: #e94560;}
+        .test { display: none; margin-top: 10px; color: white;}
+        .coursecards:hover .test { display: block;}
+        .progresscontainer { position: relative; width: 80%; height: 8px; background-color: #eee; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .progressbar { height: 100%; background-color: #e94560; transition: width 0.3s ease; }
 
-        /* Header Styling */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5px;
-            background-color: #1a1a2e;
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #e94560;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1em;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: #e94560;
-            left: 0;
-            bottom: -5px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-           /* Profile Button */
-        .profile-container {
-            position: relative;
-        }
-        .profile-btn {
-            background-color: #e94560;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-        }
-        .dropdown {
+        /* Dropdown styles */
+        #profileDropdown {
             display: none;
             position: absolute;
+            top: 70px;
             right: 0;
-            background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            z-index: 100;
-            min-width: 150px;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
         }
-        .dropdown a {
-            color: #333;
-            padding: 10px 15px;
+        #profileDropdown a {
+            color: white;
+            padding: 8px 12px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
-        .dropdown a:hover {
-            background-color: #f4f4f4;
+        #profileDropdown a:hover {
+            background-color: #e94560;
         }
-
-        /* Dropdown Show */
-        .dropdown.show {
-            display: block;
+        .icns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-/* Profile Header */
-.profile-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header .profile-pic {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-right: 20px;
-}
-
-.profile-header .profile-info h2 {
-    margin-bottom: 5px;
-    font-size: 22px;
-    color: #0047ab;
-}
-
-/* Tracking Section */
-.tracking-section {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.tracking-header h2 {
-    color: #0047ab;
-}
-
-.tracking-content {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.tracking-card {
-    flex: 1;
-    padding: 15px;
-    background-color: #f8f9fc;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-}
-
-.tracking-card h3 {
-    font-size: 20px;
-    color: #333;
-}
-
-.goal-entry label {
-    font-size: 14px;
-}
-
-.goal-entry select {
-    margin-top: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.progress-log input,
-.social-log input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-.progress-log button,
-.social-log button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 8px;
-    border: none;
-    color: #fff;
-    background-color: #0047ab;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.stat-bar {
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
-    overflow: hidden;
-}
-
-.stat-fill {
-    height: 10px;
-    background-color: #0047ab;
-    border-radius: 5px;
-}
-
-.tracking-card p {
-    color: #666;
-    font-size: 14px;
-}
-
-/* Progress Summary Section */
-.progress-summary {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.progress-summary h2 {
-    color: #0047ab;
-    margin-bottom: 15px;
-}
-
-.stats-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.stat {
-    text-align: center;
-    color: #333;
-}
-
-.stat h3 {
-    color: #0047ab;
-    font-size: 28px;
-}
-
-.stat p {
-    font-size: 14px;
-    color: #666;
-}
-
-/* Dropdown */
-.profile-container .dropdown {
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.profile-container .dropdown a {
-    color: #333;
-    padding: 10px 20px;
-    display: block;
-    text-decoration: none;
-}
-
-.profile-container .dropdown a:hover {
-    background-color: #f0f0f0;
-}
-
-/* Show dropdown on hover */
-.profile-container:hover .dropdown {
-    display: block;
-}
-
+        .icns img {
+            width: 20px;
+            height: 20px;
+            transition: 1s;
+        }
+        .icns:hover img{transform: rotate(360deg);}
+        #procon{display: flex;flex-direction: row;margin-top: 30px;
+        align-items: center;gap:50px;margin-left: 0px;
+        background: linear-gradient(45deg, #201e1e, #333); padding: 20px; 
+    border-radius: 20px;width: 600px;color: #cab5b5;}
+    
     </style>
 </head>
 <body>
-
-    <!-- Header (Retained) -->
-    <header>
-        <div class="logo">ProZone</div>
-        <nav class="nav-links">
-            <a href="#analytics">Analytics</a>
-            <a href="lb.html">Leaderboards</a>
-            <a href="#goals">Goals</a>
-        </nav>
-        <div class="profile-container" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
-            <button class="profile-btn">P</button>
-            <div class="dropdown" id="profileDropdown">
-                <a href="#settings">⚙️ Settings</a>
-                <a href="index.html">🚪 Logout</a>
+    <div id="div1">
+        <div id="logo">
+            <h1>ProZone</h1>
+        </div>
+        <div id="navbar">
+            <a class="navlnks" href="lb.html">LeaderBoards</a>
+            <a class="navlnks" href="#">Courses</a>
+            <a class="navlnks" href="#">Achievements</a>
+        </div>
+        <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button id="probtn">Pro</button>
+            <div id="profileDropdown">
+                <a href="#">
+                    <div class="icns">
+                        <img src="imgs/settings.png" alt="Settings Icon">
+                        <div>Settings</div>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="icns">
+                        <img src="imgs/logout.png" alt="Logout Icon">
+                        <div>Logout</div>
+                    </div>
+                </a>
             </div>
         </div>
-    </header>
+    </div>
+    <div id="procon">
+        <div id="propic">
+            <img src="imgs/mypic2.jpg" style="width: 110px;border-radius:50%
+            ;height: 110px;"></div>
+           <div>
+             <h2>Samrath Thukral</h2>
+             <h3>Btech. CSE(AI/ML)</h3>
+             <h3>Semester: 1</h3>
+            </div> 
 
-    <!-- Profile Header Section (Retained) -->
-    <div class="profile-header">
-        <div class="profile-pic"><img src="mypic2.jpg" alt="Profile Picture" class="profile-pic"></div>
-        <div class="profile-info">
-            <h2>Samrath Thukral</h2>
-            <p>Btech. CSE(AI/ML)</p>
-            <p>Joined: October 2024</p>
-            <p>Semester: 1</p>
+    </div>
+
+    </div>
+
+    <div id="div2">
+        <div id="coursebox"><h2 style="text-align: center; color: white;">Courses</h2>
+            <div class="coursecards">
+                <a href="ana.html" class="coursecard">
+                    <div class="courses">
+                        <h3>Database Management</h3>
+                        <p>Progress: 60%</p>
+                        <div class="progresscontainer">
+                            <div class="progressbar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="test">
+                        Upcoming Test: Nov 25 - SQL Queries
+                    </div>
+                </a>
+                
+            </div>
+            <div class="coursecards">
+                <a href="analytics-database.html" class="coursecard">
+                    <div class="courses">
+                        <h3>Database Management</h3>
+                        <p>Progress: 60%</p>
+                        <div class="progresscontainer">
+                            <div class="progressbar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="test">
+                        Upcoming Test: Nov 25 - SQL Queries
+                    </div>
+                </a>
+                
+            </div>
+            <div class="coursecards">
+                <a href="analytics-database.html" class="coursecard">
+                    <div class="courses">
+                        <h3>Database Management</h3>
+                        <p>Progress: 60%</p>
+                        <div class="progresscontainer">
+                            <div class="progressbar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="test">
+                        Upcoming Test: Nov 25 - SQL Queries
+                    </div>
+                </a>
+                
+            </div>
+            <div class="coursecards">
+                <a href="analytics-database.html" class="coursecard">
+                    <div class="courses">
+                        <h3>Database Management</h3>
+                        <p>Progress: 60%</p>
+                        <div class="progresscontainer">
+                            <div class="progressbar" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <div class="test">
+                        Upcoming Test: Nov 25 - SQL Queries
+                    </div>
+                </a>
+                
+            </div>
         </div>
     </div>
 
-    <!-- Health and Social Tracking Section -->
-    <section class="tracking-section">
-        <div class="tracking-header">
-            <h2>Health & Social Progress</h2>
-            <p>Track your fitness, wellness, and social goals</p>
-        </div>
-        <div class="tracking-content">
-            <!-- Health Tracking Card -->
-            <div class="tracking-card health-tracking">
-                <h3>Health Goals</h3>
-                <p>Log workouts, track nutrition, and view progress.</p>
-                <div class="goal-entry">
-                    <label for="activity">Activity Type:</label>
-                    <select id="activity">
-                        <option value="gym">Gym</option>
-                        <option value="yoga">Yoga</option>
-                        <option value="meditation">Meditation</option>
-                        <option value="running">Running</option>
-                    </select>
-                </div>
-                <div class="progress-log">
-                    <input type="text" placeholder="Workout log, reps, time...">
-                    <button onclick="logActivity()">Log Activity</button>
-                </div>
-                <div class="activity-stats">
-                    <h4>Current Progress</h4>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 50%"></div>
-                    </div>
-                    <p>50% of weekly goal</p>
-                </div>
-            </div>
+    <script>
+        function showDropdown() {
+            document.getElementById('profileDropdown').style.display = 'block';
+        }
 
-            <!-- Social Tracking Card -->
-            <div class="tracking-card social-tracking">
-                <h3>Social Engagement</h3>
-                <p>Track social interactions and set engagement goals.</p>
-                <div class="social-log">
-                    <input type="text" placeholder="Today's social activity...">
-                    <button onclick="logSocial()">Log Activity</button>
-                </div>
-                <div class="engagement-stats">
-                    <h4>Engagement Level</h4>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 60%"></div>
-                    </div>
-                    <p>60% of engagement goal</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Progress Summary Section (Retained) -->
-    <section class="progress-summary">
-        <h2>Your Progress Summary</h2>
-        <div class="stats-container">
-            <div class="stat">
-                <h3>3</h3>
-                <p>Courses Completed</p>
-            </div>
-            <div class="stat">
-                <h3>15</h3>
-                <p>Tests Taken</p>
-            </div>
-            <div class="stat">
-                <h3>85%</h3>
-                <p>Average Score</p>
-            </div>
-            <div class="stat">
-                <h3>80%</h3>
-                <p>Attendance</p>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
+        function hideDropdown() {
+            document.getElementById('profileDropdown').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
