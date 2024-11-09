@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="styles.css">
+ <style>
+/* styles.css */
+ /* Base Styles */
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a2e;
+            color: #333;
+           
+        }
+
+
+
+.container {
+    background-color: #1a1a2e; /* white background for the profile section */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px #f4f4f9(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.header h1 {
+    text-align: center;
+    color: #c9c9c9; /* ProZone primary color */
+    margin-bottom: 1.5rem;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e88383;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+input[type="file"] {
+    padding: 0.5rem;
+    border: none;
+    color: #d9d8d8;
+    
+}
+#bigdiv{ display: flex;flex-direction: column;
+    align-items: center;margin-top: 30px;}
+
+button.submit-btn {
+    background-color: #333; /* ProZone primary color */
+    color: #fff;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+ /* Header Styling */
+ header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 05px;
+            background-color: #1a1a2e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?success,achievement') center/cover no-repeat;
+            color: #fff; height: 200px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+
+ </style>
+
+
+
+</head>
+<body>
+    <header>
+        <div class="logo">ProZone</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to ProZone</h1>
+        <p>Transform your journey with insights, achievements, and progress tracking.</p>
+    </section>
+   <div id="bigdiv"> <div class="container">
+        <header class="header">
+            <h1>Create Your Profile</h1>
+        </header>
+        <form class="profile-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="college-id">College ID</label>
+                <input type="text" id="college-id" name="college-id" placeholder="Enter your college ID">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" >
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" >
+            </div>
+            <div class="form-group">
+                <label for="profile-image">Profile Picture</label>
+                <input type="file" id="profile-image" name="profile-image">
+            </div>
+            <div class="form-group">
+                <a href="dash.html"><button type="button" class="submit-btn">Create Profile</button></a>
+            </div>
+        </form>
+    </div>
+   </div>
+</body>
+</html>
