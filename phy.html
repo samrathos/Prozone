@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProZone Health Dashboard</title>
+<style>
+    /* Reset Styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background-color: #111122; color: #fff; padding: 20px; }
+   
+        #div1 { display: flex; flex-direction: row;
+            gap: 400px; align-items: center; 
+            background: linear-gradient(45deg, #121212, #282828);
+             padding: 10px;margin: -9px -9px 0px -9px; }
+        #logo { color: #e94560; }
+        #navbar { display: flex; gap: 40px;margin-left: 0px; }
+        #probtn { border-radius: 50%; width: 40px; height: 40px; border-style: none; 
+            margin-left: 150px; cursor: pointer;background-color: #282828; }
+        a { text-decoration: none; }
+        .navlnks { color: white; transition: 0.5s; }
+        .navlnks:hover { color: #e94560; }
+        #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+        }
+        #profileDropdown a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #profileDropdown a:hover {
+            background-color: #e94560;
+        }
+        .icns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icns img {
+            width: 20px;
+            height: 20px;
+            transition: 1s;
+        }
+        .icns:hover img{transform: rotate(360deg);}
+    /* Header */
+    h1 { text-align: center; color: #FFD700; margin-bottom: 10px; }
+
+    /* Tabs */
+    .tabs { display: flex; justify-content: center; margin-bottom: 20px; }
+    .tab { padding: 10px 20px; cursor: pointer; background-color: #333344; color: #FFF; margin: 0 5px; border-radius: 20px; transition: 0.3s; }
+    .tab.active, .tab:hover { background-color: #FF4A6E; color: #FFF; }
+
+    /* Main Dashboard */
+    .dashboard { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    /* Card */
+    .card { background: #222233; border-radius: 10px; padding: 20px; position: relative; transition: transform 0.3s; cursor: pointer; }
+    .card:hover { transform: scale(1.05); }
+    .card h2 { color: #ff4a6e; font-size: 1.2rem; }
+
+    /* Progress Bar */
+    .progress { width: 100%; height: 15px; background: #333344; border-radius: 8px; margin-top: 5px; overflow: hidden; }
+    .progress-bar { height: 100%; background: #ff4a6e; transition: width 0.3s ease-in-out; }
+
+    /* Habit Streak Counter */
+    .streak { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; margin-top: 10px; color: #FFD700; }
+    .streak span { color: #FF4A6E; }
+
+    /* Regimen Builder */
+    .regimen-container { background: #2a2a3b;
+         border-radius: 10px; padding: 20px; 
+         display: flex; flex-direction: column; gap: 10px;
+          position: relative;margin-left: ; }
+    .regimen-item { display: flex; justify-content: space-between; align-items: center; background: #333344; padding: 10px; border-radius: 8px; }
+    .regimen-item button { background: #ff4a6e; border: none; padding: 5px 10px; color: #fff; cursor: pointer; border-radius: 5px; }
+    .regimen-item button:hover { background: #ff8093; }
+    .edit-icon { position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 1.2rem; color: #FFD700; }
+
+    /* Add New Item Form */
+    .new-item-form { display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .new-item-form select, .new-item-form button { padding: 8px; border-radius: 5px; border: none; }
+
+    /* Gym Log Section */
+    .gym-log { background: #333344; border-radius: 10px; padding: 20px; margin-top: 20px; }
+    .gym-log h2 { color: #FFD700; }
+    .log-item { display: flex; justify-content: space-between; align-items: center; background: #2a2a3b; padding: 10px; border-radius: 8px; margin-top: 10px; }
+   #logi{color: #e94560;}
+
+</style>
+</head>
+<body>
+    <div id="div1">
+        <div id="logo">
+            <h1 id="logi">ProZone</h1>
+        </div>
+        <div id="navbar">
+            <a class="navlnks" href="leader.html">LeaderBoards</a>
+            <a class="navlnks" href="#">Courses</a>
+            <a class="navlnks" href="#">Achievements</a>
+        </div>
+        <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/profile.webp"></button>
+            <div id="profileDropdown">
+                <a href="profile.html">
+                    <div class="icns">
+                        <img style="border-radius: 50%;" src="imgs/profile.webp" alt="Profile Icon">
+                        <div>Profile</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="icns">
+                        <img src="imgs/settings.png" alt="Settings Icon">
+                        <div>Settings</div>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="icns">
+                        <img src="imgs/logout.png" alt="Logout Icon">
+                        <div>Logout</div>
+                    </div>
+                </a>
+              
+            </div>
+        </div>
+    </div>
+
+<h1>ProZone Health Analytics</h1>
+
+<!-- Tabs -->
+<div class="tabs">
+    <div class="tab active" onclick="switchTab('daily')">Daily</div>
+    <div class="tab" onclick="switchTab('weekly')">Weekly</div>
+    <div class="tab" onclick="switchTab('monthly')">Monthly</div>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard">
+    <div class="card">
+        <h2>Steps</h2>
+        <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+        <div class="streak">Streak: <span>5 Days</span></div>
+    </div>
+    <div class="card">
+        <h2>Water Intake</h2>
+        <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
+        <div class="streak">Streak: <span>3 Days</span></div>
+    </div>
+    <div class="card">
+        <h2>Calories Burned</h2>
+        <div class="progress"><div class="progress-bar" style="width: 60%;"></div></div>
+        <div class="streak">Streak: <span>7 Days</span></div>
+    </div>
+    
+    <!-- Regimen Container -->
+    <div class="regimen-container">
+        <h2>Your Regimen</h2>
+        <span class="edit-icon" onclick="toggleEditMode()">✏️</span>
+        <div id="regimenList">
+            <div class="regimen-item">
+                <span>Morning Walk</span>
+                <button onclick="completeTask(this)">Complete</button>
+            </div>
+            <div class="regimen-item">
+                <span>Yoga</span>
+                <button onclick="completeTask(this)">Complete</button>
+            </div>
+        </div>
+        
+        <!-- Add New Item Form -->
+        <div class="new-item-form" id="newItemForm">
+            <select id="exerciseSelect">
+                <option value="Running">Running</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Cycling">Cycling</option>
+                <option value="Weightlifting">Weightlifting</option>
+                <option value="Pilates">Pilates</option>
+                <option value="HIIT">HIIT</option>
+                <!-- Add more exercises as needed -->
+            </select>
+            <button onclick="addRegimenItem()">Add Exercise</button>
+        </div>
+    </div>
+</div>
+
+<!-- Gym Log Section -->
+<div class="gym-log">
+    <h2>Gym Log</h2>
+    <div class="log-item">
+        <span>Bench Press</span>
+        <span>Sets: 3 x Reps: 10</span>
+    </div>
+    <div class="log-item">
+        <span>Deadlift</span>
+        <span>Sets: 4 x Reps: 8</span>
+    </div>
+    <!-- Add more items as needed -->
+</div>
+
+<script>
+    function showDropdown() {
+            document.getElementById('profileDropdown').style.display = 'block';
+        }
+
+        function hideDropdown() {
+            document.getElementById('profileDropdown').style.display = 'none';}
+    // Toggle Regimen Edit Mode
+    function toggleEditMode() {
+        const newItemForm = document.getElementById('newItemForm');
+        newItemForm.style.display = newItemForm.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Add New Regimen Item
+    function addRegimenItem() {
+        const regimenList = document.getElementById('regimenList');
+        const exerciseSelect = document.getElementById('exerciseSelect');
+        const exercise = exerciseSelect.value;
+
+        const newItem = document.createElement('div');
+        newItem.classList.add('regimen-item');
+        newItem.innerHTML = `<span>${exercise}</span> <button onclick="completeTask(this)">Complete</button>`;
+        
+        regimenList.appendChild(newItem);
+    }
+
+    // Complete Regimen Task
+    function completeTask(button) {
+        button.style.backgroundColor = '#555';
+        button.textContent = 'Done!';
+        button.disabled = true;
+    }
+
+    // Function to switch tabs
+    function switchTab(view) {
+        alert(`Switched to ${view} view`);  // Placeholder for tab switch functionality
+    }
+</script>
+
+</body>
+</html>
