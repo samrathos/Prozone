@@ -12,7 +12,7 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7fa;
+            background-color:#333;
             color: #333;
             display: flex;
             flex-direction: column;
@@ -20,6 +20,51 @@
             padding: 20px;
         ;
         }
+        #div1 { display: flex; flex-direction: row;
+            gap: 400px; align-items: center; 
+            background: linear-gradient(45deg, #121212, #282828);
+             padding: 10px;margin: -30px -65px 0px -65px;width: 1540px; }
+        #logo { color: #e94560; }
+        #navbar { display: flex; gap: 40px;margin-left: 0px; }
+        #probtn { border-radius: 50%; width: 40px; height: 40px; border-style: none; 
+            margin-left: 150px; cursor: pointer;background-color: #282828; }
+        a { text-decoration: none; }
+        .navlnks { color: white; transition: 0.5s; }
+        .navlnks:hover { color: #e94560; }
+        #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+        }
+        #profileDropdown a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #profileDropdown a:hover {
+            background-color: #e94560;
+        }
+        .icns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icns img {
+            width: 20px;
+            height: 20px;
+            transition: 1s;
+        }
+        .icns:hover img{transform: rotate(360deg);}
 
         /* Profile Container */
         .profile-container {
@@ -89,7 +134,7 @@
             transform: scale(1.15);
         }
         .social-links .facebook { background-color: #4267B2; }
-        .social-links .twitter { background-color: #1DA1F2; }
+        .social-links .twitter { background-color: #000000; }
         .social-links .instagram { background-color: #E1306C; }
         .social-links .linkedin { background-color: #2867B2; }
         .social-links .coshira { background-color: #e94560; }
@@ -157,7 +202,7 @@
         }
         .progress-bar {
             height: 100%;
-            background-color: #e94560;
+            background: linear-gradient(45deg,#2867B2,#4267B2);
             border-radius: 5px;
             transition: width 0.3s ease;
         }
@@ -189,14 +234,47 @@
     </style>
 </head>
 <body>
+    <div id="div1">
+        <div id="logo">
+            <h1>ProZone</h1>
+        </div>
+        <div id="navbar">
+            <a class="navlnks" href="dash.html">Dashboard</a>
+            <a class="navlnks" href="leader.html">LeaderBoards</a>
+            <a class="navlnks" href="dash.html">Courses</a>
+            <a class="navlnks" href="achi.html">Achievements</a>
+        </div>
+        <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/man.png"></button>
+            <div id="profileDropdown">
+                <a href="profile.html">
+                    <div class="icns">
+                        <img style="border-radius: 50%;" src="imgs/man.png" alt="Profile Icon">
+                        <div>Profile</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="icns">
+                        <img src="imgs/settings.png" alt="Settings Icon">
+                        <div>Settings</div>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="icns">
+                        <img src="imgs/logout.png" alt="Logout Icon">
+                        <div>Logout</div>
+                    </div>
+                </a>
+              
+            </div>
+        </div>
+    </div>
     <div class="profile-container">
-        <!-- Profile Header -->
         <div class="profile-header">
-            <div class="profile-pic-large"><img src="imgs/ABKP.jpg" alt="Profile Picture"></div>
+            <div class="profile-pic-large"><img src="imgs/programmer.png" alt="Profile Picture"></div>
             <div class="profile-info">
                 <h1>Abhishek Kumar Pundir</h1>
                 <p>Top Performer, Computer Science Major</p>
-                <!-- Achievement Tags -->
                 <div class="achievements">
                     <span class="achievement-icon">
                         🏆
@@ -250,11 +328,11 @@
                     <div class="score">70%</div>
                 </div>
                 <div class="subject-item">
-                    <div class="subject-name">Chemistry</div>
+                    <div class="subject-name">Python Programming</div>
                     <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 92%;"></div>
+                        <div class="progress-bar" style="width: 100%;"></div>
                     </div>
-                    <div class="score">92%</div>
+                    <div class="score">100%</div>
                 </div>
             </div>
         </div>
@@ -272,27 +350,57 @@
                 </tr>
                 <tr>
                     <td>Mathematics</td>
-                    <td>88</td>
-                    <td>92</td>
-                    <td>87</td>
-                    <td>90</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>100</td>
                 </tr>
                 <tr>
                     <td>Physics</td>
-                    <td>75</td>
-                    <td>80</td>
-                    <td>78</td>
-                    <td>85</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>100</td>
                 </tr>
                 <tr>
-                    <td>Chemistry</td>
-                    <td>90</td>
-                    <td>94</td>
-                    <td>91</td>
-                    <td>93</td>
+                    <td>CSE326</td>
+                    <td>15</td>
+                    <td>30</td>
+                    <td>-</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>CSE111</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>-</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>MEC134</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>40</td>
+                    <td>100</td>
                 </tr>
             </table>
         </div>
     </div>
+    <div> <a href="compana.html"><button id="bt">Compare Analytics</button></a> </div>
+    <style>
+        #bt{margin-top: 30px;width: 800px;
+            border-radius: 10px;
+        background:linear-gradient(45deg,#2867B2,#1a1a2e);
+    color: #ddd;height: 40px;}
+    </style>
+    
+    <script>
+        function showDropdown() {
+            document.getElementById('profileDropdown').style.display = 'block';
+        }
+
+        function hideDropdown() {
+            document.getElementById('profileDropdown').style.display = 'none';}
+</script>
 </body>
 </html>

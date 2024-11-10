@@ -298,15 +298,15 @@ margin-right: 100px;color: #eee;padding: 10px ;}
         </div>
         <div id="navbar">
             <a class="navlnks" href="leader.html">LeaderBoards</a>
-            <a class="navlnks" href="#">Courses</a>
-            <a class="navlnks" href="#">Achievements</a>
+            <a class="navlnks" href="#coursebox">Courses</a>
+            <a class="navlnks" href="achi.html">Achievements</a>
         </div>
         <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
-            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/profile.webp"></button>
+            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/man.png"></button>
             <div id="profileDropdown">
                 <a href="profile.html">
                     <div class="icns">
-                        <img style="border-radius: 50%;" src="imgs/profile.webp" alt="Profile Icon">
+                        <img style="border-radius: 50%;" src="imgs/man.png" alt="Profile Icon">
                         <div>Profile</div>
                     </div>
                 </a>
@@ -353,7 +353,7 @@ margin-right: 100px;color: #eee;padding: 10px ;}
                 
             </div>
             <div class="coursecards">
-                <a href="analytics-database.html" class="coursecard">
+                <a href="ana.html" class="coursecard">
                     <div class="courses">
                         <h3>Machine Learning</h3>
                         <p>Progress: 40%</p>
@@ -400,7 +400,7 @@ margin-right: 100px;color: #eee;padding: 10px ;}
             <div class="coursecards">
                 <a href="analytics-database.html" class="coursecard">
                     <div class="courses">
-                        <h3>Machine Learning</h3>
+                        <h3>Python Programming</h3>
                         <p>Progress: 40%</p>
                         <div class="progresscontainer">
                             <div class="progressbar" style="width: 40%;"></div>
@@ -441,23 +441,17 @@ margin-right: 100px;color: #eee;padding: 10px ;}
             <input type="text" id="taskInput" placeholder="Enter new task" />
             <button class="btns" onclick="addTask()">Add</button>
         </div>
-        <!-- </div> -->
+       
         
     </div>
-    <!-- <div id="disdiv">
-        <ul>
-            <li>ProBro</li>
-            <li>Analytics</li>
-            
-        </ul>
-    </div> -->
+   
     
     <div id="healthSocialSection">
         <div class="sectionCard" onclick="window.location.href='physical.html'">
             <h2>Physical Health</h2>
             
-            <div style="display: flex;"><img src="imgs/pedo.jpg" style="width: 35px;height: 35px;margin-top: 10px;margin-right: 10px;border-radius: 50%;"><h3>Steps: 8,512</h3></div>
-            <div style="display: flex;"><img src="imgs/stairs.png" style="width: 35px;height: 35px;margin-top: 10px;margin-right: 10px;border-radius: 50%;"><h3>Elevation: 15 floors</h3></div>
+            <div style="display: flex;"><img src="imgs/pedometer.png" style="width: 35px;height: 35px;margin-top: 10px;margin-right: 10px;border-radius: 50%;"><h3>Steps: 8,512</h3></div>
+            <div style="display: flex;"><img src="imgs/elevation.png" style="width: 35px;height: 35px;margin-top: 10px;margin-right: 10px;border-radius: 50%;"><h3>Elevation: 15 floors</h3></div>
             <div style="display: flex;"><img id="heart" src="imgs/heart.png" style="width: 35px;height: 35px;margin-top: 10px;margin-right: 10px;border-radius: 50%;"><h3>Avg Heart Rate: 78 bpm</h3></div>
             <div style="display: flex;"><h3>Today's Regime: ✅</h3></div> 
 
@@ -465,7 +459,8 @@ margin-right: 100px;color: #eee;padding: 10px ;}
         </div>
         <div class="sectionCard1" onclick="window.location.href='socialLife.html'">
             <h2>Social Life</h2>
-            <p>Log your social interactions</p>
+            <img style="width: 150px;margin-top: 20px;"  src="imgs/social-life.png">
+            <p style="margin: 20px;" >Log your social interactions</p>
         </div>
     </div>
    

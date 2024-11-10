@@ -3,231 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProZone - Course Analytics</title>
+    <title>ProZone - Machine Learning Analytics</title>
     <style>
-        /* Basic Styles */
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7fa;
+            background-color: #121212;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px;
         }
 
-        /* Navbar */
-        .navbar {
-            background-color: #1a1a2e;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            width: 90%;
+        /* Container */
+        .analytics-container {
             max-width: 1200px;
-        }
-
-        /* Course Header */
-        .course-header {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        /* Tabs for Analytics Sections */
-        .tab-container {
-            display: flex;
-            justify-content: center;
+            width: 100%;
+            background:linear-gradient(45deg,#1a1a2e,#ddd);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
             margin-top: 20px;
         }
-        .tab {
-            padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #eee;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .tab.active {
-            background-color: #1a1a2e;
-            color: #fff;
-        }
 
-        /* Analytics Content */
-        .analytics-content {
-            margin-top: 20px;
-            display: none;
-        }
-        .analytics-content.active {
-            display: block;
-        }
-
-        /* Progress Section */
-        .progress-container {
+        /* Header */
+        .header {
             text-align: center;
+            margin-bottom: 30px;
         }
-        .progress-bar {
-            width: 80%;
-            max-width: 500px;
-            height: 25px;
-            background-color: #eee;
-            border-radius: 5px;
-            margin: 10px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background-color: #e94560;
-            transition: width 0.5s ease;
-            border-radius: 5px;
+        .header h1 {
+            font-size: 2em;
+            color: #121212;
         }
 
-        /* Syllabus Section */
-        .syllabus-container {
+        /* Section Titles */
+        h2 {
+            color: #1a1a2e;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Syllabus Overview */
+        .syllabus-section {
+            margin-bottom: 30px;
+        }
+        .syllabus-list {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 10px;
         }
         .syllabus-item {
-            background-color: #fff;
-            padding: 10px;
-            width: 100%;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .syllabus-item:hover {
+            background-color: #e1e9f0;
         }
         .syllabus-item.completed {
-            color: #1a1a2e;
+            color: #1a7a1a;
             font-weight: bold;
         }
 
-        /* Assessment Scores */
-        .assessment-scores {
-            text-align: center;
+        /* Progress Summary */
+        .progress-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
         }
-        .assessment-table {
+        .progress-box {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f0f4f8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .progress-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        .progress-bar-container {
+            height: 12px;
+            background-color: #e1e9f0;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #e94560;
+            border-radius: 6px;
+        }
+
+        /* Test Records & Countdown */
+        .test-records-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .test-table-container, .next-test-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
             border-collapse: collapse;
         }
-        .assessment-table th, .assessment-table td {
-            padding: 10px;
+        th, td {
             border: 1px solid #ddd;
+            padding: 8px;
             text-align: center;
         }
-        .assessment-table th {
+        th {
             background-color: #1a1a2e;
             color: #fff;
         }
+        .countdown, .syllabus-to-cover {
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* Additional Analytics */
+        .additional-analytics {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .analytics-box {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .analytics-box h3 {
+            font-size: 1.5em;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        #div1 { display: flex; flex-direction: row;
+            gap: 425px; align-items: center; 
+            background: linear-gradient(45deg, #121212, #282828);
+             padding: 10px;margin: -15px -9px 0px -9px;width: 1550px; }
+        #logo { color: #e94560;margin-left: 5px; }
+        #navbar { display: flex; gap: 40px;margin-left: 0px; }
+        #probtn { border-radius: 50%; width: 40px; height: 40px; border-style: none; 
+            margin-left: 140px; cursor: pointer;background-color: #282828; }
+        a { text-decoration: none; }
+        .navlnks { color: white; transition: 0.5s; }
+        .navlnks:hover { color: #e94560; }
+        #div2 { margin-top: 30px;float: right; }
+        #coursebox { float: left; width: 600px; border-radius: 20px; background: linear-gradient(45deg, #201e1e, #333); padding: 20px; display: block;
+        padding-bottom: 30px; }
+        .courses { color: white;transition: 0.5s; }
+       
+        .coursecards { margin-top: 50px; border: #121212 solid; border-radius: 10px; padding: 10px; background-color: #121212; transition: 0.5s; }
+        .coursecards:hover { transform: translateY(-10px);}
+        .coursecards:hover .courses{ color: #e94560;}
+        .test { display: none; margin-top: 10px; color: white;}
+        .coursecards:hover .test { display: block;}
+        .progresscontainer { position: relative; width: 80%; height: 8px; background-color: #eee; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .progressbar { height: 100%; background-color: #e94560; transition: width 0.3s ease; }
+        #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+        }
+        #profileDropdown a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #profileDropdown a:hover {
+            background-color: #e94560;
+        }
+        .icns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icns img {
+            width: 20px;
+            height: 20px;
+            transition: 1s;
+        }
+        .icns:hover img{transform: rotate(360deg);}
+        #procon{display: flex;flex-direction: row;margin-top: 30px;
+        align-items: center;gap:50px;margin-left: 0px;
+        background: linear-gradient(45deg, #201e1e, #333); padding: 20px; 
+    border-radius: 20px;width: 600px;color: #cab5b5;}
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-        <a href="lb.html">Leaderboards</a>
-        <a href="ana.html">Analytics</a>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="course-header">
-            <h1>Course Analytics: Data Structures</h1>
-            <p>Track your progress, review syllabus, and view assessment scores.</p>
+    <div id="div1">
+        <div id="logo">
+            <h1>ProZone</h1>
         </div>
-
-        <!-- Tab Selection -->
-        <div class="tab-container">
-            <div class="tab active" onclick="showTab('progress')">Progress</div>
-            <div class="tab" onclick="showTab('syllabus')">Syllabus</div>
-            <div class="tab" onclick="showTab('scores')">Assessment Scores</div>
+        <div id="navbar">
+            <a class="navlnks" href="dash.html">Dashboard</a>
+            <a class="navlnks" href="leader.html">LeaderBoards</a>
+            <a class="navlnks" href="achi.html">Achievements</a>
         </div>
-
-        <!-- Progress Content -->
-        <div id="progress" class="analytics-content active">
-            <div class="progress-container">
-                <h2>Course Progress</h2>
-                <p>75% completed</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Syllabus Content -->
-        <div id="syllabus" class="analytics-content">
-            <div class="syllabus-container">
-                <h2>Course Syllabus</h2>
-                <div class="syllabus-item completed">
-                    <span>Introduction to Data Structures</span>
-                    <span>Completed</span>
-                </div>
-                <div class="syllabus-item">
-                    <span>Arrays and Linked Lists</span>
-                    <span>In Progress</span>
-                </div>
-                <div class="syllabus-item">
-                    <span>Stacks and Queues</span>
-                    <span>Not Started</span>
-                </div>
-                <!-- More syllabus items -->
-            </div>
-        </div>
-
-        <!-- Assessment Scores Content -->
-        <div id="scores" class="analytics-content">
-            <div class="assessment-scores">
-                <h2>Assessment Scores</h2>
-                <table class="assessment-table">
-                    <tr>
-                        <th>Quiz</th>
-                        <th>Score</th>
-                    </tr>
-                    <tr>
-                        <td>Quiz 1: Data Structures Basics</td>
-                        <td>85%</td>
-                    </tr>
-                    <tr>
-                        <td>Quiz 2: Arrays and Linked Lists</td>
-                        <td>90%</td>
-                    </tr>
-                    <!-- Additional scores -->
-                </table>
+        <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/man.png"></button>
+            <div id="profileDropdown">
+                <a href="profile.html">
+                    <div class="icns">
+                        <img style="border-radius: 50%;" src="imgs/man.png" alt="Profile Icon">
+                        <div>Profile</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="icns">
+                        <img src="imgs/settings.png" alt="Settings Icon">
+                        <div>Settings</div>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="icns">
+                        <img src="imgs/logout.png" alt="Logout Icon">
+                        <div>Logout</div>
+                    </div>
+                </a>
+              
             </div>
         </div>
     </div>
 
+    <div class="analytics-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Machine Learning - Subject Analytics</h1>
+        </div>
+
+        <!-- Syllabus Section -->
+        <div class="syllabus-section">
+            <h2>Syllabus Overview</h2>
+            <div class="syllabus-list">
+                <div class="syllabus-item completed">Introduction to Machine Learning - Completed</div>
+                <div class="syllabus-item">Supervised Learning Basics - In Progress</div>
+                <div class="syllabus-item">Unsupervised Learning - Not Started</div>
+                <div class="syllabus-item">Neural Networks - In Progress</div>
+            </div>
+        </div>
+
+        <!-- Progress Summary Section -->
+        <div class="progress-section">
+            <div class="progress-box">
+                <h3>Progress Rate</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 80%;"></div>
+                </div>
+                <p>80%</p>
+            </div>
+            <div class="progress-box">
+                <h3>Completion Percentage</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 65%;"></div>
+                </div>
+                <p>65%</p>
+            </div>
+        </div>
+
+        <!-- Test Records & Countdown Section -->
+        <div class="test-records-section">
+            <div class="test-table-container">
+                <h2>Test Records</h2>
+                <table>
+                    <tr>
+                        <th>Test Date</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>2024-10-15</td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-20</td>
+                        <td>78%</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="next-test-container">
+                <h2>Upcoming Test</h2>
+                <div class="countdown">Next Test in: 3 days</div>
+                <div class="syllabus-to-cover">Topics to Cover: Unsupervised Learning, Neural Networks</div>
+            </div>
+        </div>
+
+        <!-- Additional Analytics Section -->
+        <div class="additional-analytics">
+            <div class="analytics-box">
+                <h3>Hours Studied This Week</h3>
+                <p>12 hours</p>
+            </div>
+            <div class="analytics-box">
+                <h3>Average Study Time per Module</h3>
+                <p>2.5 hours</p>
+            </div>
+            <div class="analytics-box">
+                <h3>Focus Topics</h3>
+                <p>Neural Networks, Supervised Learning</p>
+            </div>
+        </div>
+
+    </div>
     <script>
-        // JavaScript to handle tab switching
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.tab');
-            const contents = document.querySelectorAll('.analytics-content');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-            
-            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+        function showDropdown() {
+            document.getElementById('profileDropdown').style.display = 'block';
         }
-    </script>
+
+        function hideDropdown() {
+            document.getElementById('profileDropdown').style.display = 'none';}</script>
 
 </body>
 </html>
