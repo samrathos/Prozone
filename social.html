@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProZone - Social Life</title>
+<style>
+    /* Color and font settings */
+    :root {
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --accent-color: #ff7e67;
+        --text-color: #e0e0e0;
+        --highlight: #894d0c;
+        --button-bg: #;
+        --button-hover: #e94560;
+    }
+    body { font-family: Arial, Helvetica, sans-serif; background-color: #121212; }
+        #div1 { display: flex; flex-direction: row;
+            gap: 400px; align-items: center; 
+            background: linear-gradient(45deg, #121212, #282828);
+             padding: 10px;margin: -9px -9px 0px -9px; }
+        #logo { color: #e94560; }
+        #navbar { display: flex; gap: 40px;margin-left: 0px; }
+        #probtn { border-radius: 50%; width: 40px; height: 40px; border-style: none; 
+            margin-left: 60px; cursor: pointer;background-color: #282828; }
+        a { text-decoration: none; }
+        .navlnks { color: white; transition: 0.5s; }
+        .navlnks:hover { color: #e94560; }
+
+    /* Main container for page content */
+    .container {
+        max-width: 1000px;
+        margin: 50px auto;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .container h1 {
+        font-size: 3rem;
+        color: var(--highlight);
+        margin-bottom: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: fadeIn 2s ease-in-out;
+    }
+    /* Social card grid layout */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .grid .social-card {
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--text-color);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    /* Card hover effect */
+    .social-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 126, 103, 0.2);
+    }
+    /* Card titles */
+    .social-card h2 {
+        font-size: 1.8rem;
+        color: var(--highlight);
+        margin: 10px 0 20px;
+    }
+    /* Card descriptions */
+    .social-card p {
+        font-size: 1rem;
+        color: #b3b3b3;
+        line-height: 1.6;
+    }
+    /* Call-to-action button styling */
+    .action-btn {
+        background-color: var(--button-bg);
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        padding: 12px 30px;
+        font-size: 1rem;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .action-btn:hover {
+        background-color: var(--button-hover);
+        transform: scale(1.1);
+    }
+    /* Unique icon in each card */
+    .icon {
+        font-size: 4rem;
+        color: var(--highlight);
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        opacity: 0.1;
+        transform: rotate(30deg);
+    }
+    /* Fade-in effect for title */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    #profileDropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+        }
+        #profileDropdown a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #profileDropdown a:hover {
+            background-color: #e94560;
+        }
+        .icns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icns img {
+            width: 20px;
+            height: 20px;
+            transition: 1s;
+        }
+        .icns:hover img{transform: rotate(360deg);}
+</style>
+</head>
+<body>
+    <div id="div1">
+        <div id="logo">
+            <h1>ProZone</h1>
+        </div>
+        <div id="navbar">
+            <a class="navlnks" href="dash.html">Dashboard</a>
+            <a class="navlnks" href="leader.html">LeaderBoards</a>
+            <a class="navlnks" href="dash.html">Courses</a>
+            <a class="navlnks" href="achi.html">Achievements</a>
+        </div>
+        <div onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+            <button id="probtn"><img style="width: 40px;border-radius: 50%;height: 40px;"src="imgs/man.png"></button>
+            <div id="profileDropdown">
+                <a href="profile.html">
+                    <div class="icns">
+                        <img style="border-radius: 50%;" src="imgs/man.png" alt="Profile Icon">
+                        <div>Profile</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="icns">
+                        <img src="imgs/settings.png" alt="Settings Icon">
+                        <div>Settings</div>
+                    </div>
+                </a>
+                <a href="index.html">
+                    <div class="icns">
+                        <img src="imgs/logout.png" alt="Logout Icon">
+                        <div>Logout</div>
+                    </div>
+                </a>
+              
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <h1>Social Life</h1>
+
+    <div class="grid">
+        <!-- Event Card -->
+        <div class="social-card">
+            
+            <h2>Discover Events</h2>
+            <p>Find events, workshops, and meetups near you. Connect with others and make memories.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Explore Events</button>
+        </div>
+
+        <!-- Friend Matching Card -->
+        <div class="social-card">
+            <div class="icon"></div>
+            <h2>Find Friends</h2>
+            <p>Explore new connections and find friends with shared interests to build your network.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Meet People</button>
+        </div>
+
+        <!-- Chat Rooms Card -->
+        <div class="social-card">
+           
+            <h2>Chat Rooms</h2>
+            <p>Join group chats based on shared topics, collaborate, and have fun with your peers.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Enter Chat</button>
+        </div>
+
+        <!-- Journal Card -->
+        <div class="social-card">
+            
+            <h2>Social Journal</h2>
+            <p>Document your experiences and personal growth through journaling and self-reflection.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Start Journaling</button>
+        </div>
+    </div>
+</div>
+<script>
+    function showDropdown() {
+        document.getElementById('profileDropdown').style.display = 'block';
+    }
+
+    function hideDropdown() {
+        document.getElementById('profileDropdown').style.display = 'none';}
+        </script>
+</body>
+</html>

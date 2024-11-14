@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProZone - Social Life</title>
+<style>
+    /* Color and font variables for consistency */
+    :root {
+        --background: #000000;
+        --primary-color: #ee8c46;
+        --accent-color: #e94560;
+        --text-color: #333;
+        --card-bg: #ccc5c1;
+        --button-bg: #ee8c46;
+        --highlight: #ee9b00;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: var(--background);
+        color: var(--text-color);
+    }
+    /* Centered container */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+    }
+    /* Social life cards */
+    .social-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin: 20px auto;
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+    }
+    .social-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    }
+    .card-content {
+        padding: 20px;
+    }
+    .card-content h2 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+    .card-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-color);
+    }
+    /* Button styling */
+    .action-btn {
+        background-color: var(--button-bg);
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        font-size: 1rem;
+        padding: 12px 25px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+    }
+    .action-btn:hover {
+        background-color: var(--highlight);
+    }
+    /* Icons inside cards */
+    .icon {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Social Life at ProZone</h1>
+
+    <!-- Social Event Card -->
+    <div class="social-card">
+        <div class="icon">🎉</div>
+        <div class="card-content">
+            <h2>Upcoming Events</h2>
+            <p>Stay updated with the latest events, workshops, and gatherings! Connect with peers who share your interests.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">View Events</button>
+        </div>
+    </div>
+
+    <!-- Friend Matchmaking Card -->
+    <div class="social-card">
+        <div class="icon">🤝</div>
+        <div class="card-content">
+            <h2>Friend Matchmaking</h2>
+            <p>Looking to expand your social circle? Try our friend matchmaking feature to find people with similar hobbies!</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Find Friends</button>
+        </div>
+    </div>
+
+    <!-- Chat Rooms Card -->
+    <div class="social-card">
+        <div class="icon">💬</div>
+        <div class="card-content">
+            <h2>Discussion Rooms</h2>
+            <p>Join topic-specific chat rooms, where you can engage in lively discussions or find study partners.</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Join Chat</button>
+        </div>
+    </div>
+
+    <!-- Social Journal Card -->
+    <div class="social-card">
+        <div class="icon">📓</div>
+        <div class="card-content">
+            <h2>Social Journal</h2>
+            <p>Track your social milestones and document meaningful connections. Your journey, your memories!</p>
+            <button class="action-btn" onclick="alert('Feature Coming Soon!')">Start Journaling</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
