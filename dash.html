@@ -223,7 +223,7 @@ margin-right: 100px;color: #eee;padding: 10px ;}
 }
 #sidebar {
            float: left;
-            width: 80px; /* Collapsed width */
+            width: 80px; 
             height: 340px;
             background-color: #121212;
             display: flex;
@@ -235,12 +235,12 @@ margin-right: 100px;color: #eee;padding: 10px ;}
             border-radius: 10px;
         }
         
-        /* Expand sidebar on hover */
+   
         #sidebar:hover {
-            width: 440px; /* Expanded width */background:linear-gradient(45deg,#333,#201e1e);
+            width: 440px; background:linear-gradient(45deg,#333,#201e1e);
         }
         
-        /* Sidebar link styles */
+        
         .sidebar-link {
             color: white;
             padding: 20px;
@@ -257,7 +257,7 @@ margin-right: 100px;color: #eee;padding: 10px ;}
             background-color: #282828;
         }
         
-        /* Sidebar icons */
+        
         .sidebar-icon {
             width: 40px;
             height: 40px;
@@ -265,22 +265,22 @@ margin-right: 100px;color: #eee;padding: 10px ;}
             margin-left: 19px;
         }
 
-        /* Sidebar text */
+        
         .sidebar-text {
             font-size: 1em;
-            opacity: 0; /* Hide text when sidebar is collapsed */
+            opacity: 0; 
             transition: opacity 0.3s ease;
         }
         
         #sidebar:hover .sidebar-text {
-            opacity: 1; /* Show text when sidebar is expanded */
+            opacity: 1; 
         }
 #heart {
         animation: heartbeat 1s ease-in-out infinite;
     }
    
 
-    /* Keyframes for heartbeat animation */
+  
     @keyframes heartbeat {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.2); }
