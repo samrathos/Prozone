@@ -76,11 +76,10 @@ margin-left: -3px;transition: width ease 1s;}
 .health-apps:hover{width: 200px;}
 .health-apps:hover h2{display: block;}
 
-        /* Graph Section */
+       
         .graph-container { display: none; background: color #282828;; padding: 20px; border-radius: 10px; text-align: center; margin: 20px auto; width: 600px; }
         .graph-container img { max-width: 100%; border-radius: 10px; }
         
-        /* Toggle Buttons */
         .toggle-buttons { display: flex; gap: 15px; justify-content: center; 
             margin-top: 15px;width: 500px; margin-left: 480px;}
         .toggle-buttons button { background-color: #096423; border: none; color: white; 
@@ -88,10 +87,7 @@ margin-left: -3px;transition: width ease 1s;}
             cursor: pointer;width: 80px;height: 45px;}
         .toggle-buttons button:hover { background-color: #100a0b; }
 
-        /* Workout Routine Section */
-        
-
-        /* Comparison Section */
+       
         .comparison-container { background-color: #000000; padding: 15px; text-align: center; 
             border-radius: 10px; margin: 20px auto; 
             max-width: 600px;color: aliceblue; }
@@ -141,7 +137,7 @@ margin-left: -3px;transition: width ease 1s;}
         height: 40px;margin-top: 10px;" src="imgs/regimen.png"><img 
         style="width: 20px;height: 20px;margin-left: 150px;
         margin-top: 19px;"src="imgs/pencil.png"></div>
-        <button class="regimen-item" onclick="showActivityGraph('walk')">Morning Walk</button>
+        <button class="regimen-item" onclick="showActivityGraph('walk')">Walking</button>
         <button class="regimen-item" onclick="showActivityGraph('yoga')">Yoga</button>
         <button class="regimen-item" onclick="showActivityGraph('cycling')">Cycling</button>
     </div>
@@ -172,23 +168,20 @@ margin-left: -3px;transition: width ease 1s;}
     transform: scale(1.1);
           } 
     </style>50%
-        <!-- Graph Display Section -->
+      
         <div class="graph-container" id="graphContainer">
             <h3>Activity Graphs</h3>
             <img id="graphImage" src="imgs/daily.jpg" alt="Activity Graph">
         </div>
     
-        <!-- Toggle Buttons for Daily/Weekly/Monthly Data -->
+       >
         <div class="toggle-buttons">
             <button onclick="toggleGraph('daily')">Daily</button>
             <button onclick="toggleGraph('weekly')">Weekly</button>
             <button onclick="toggleGraph('monthly')">Monthly</button>
         </div>
     
-        <!-- Workout Routine Section -->
-       
-    
-        <!-- Comparison Section -->
+      
         <div class="comparison-container">
             <h3>Compare with Others</h3>
             <button>Compare with Leaderboard</button>
@@ -204,7 +197,7 @@ margin-left: -3px;transition: width ease 1s;}
         </script>
         <style>
             .toggle-buttons { 
-                display: none; /* Initially hidden */
+                display: none;
                 gap: 10px; 
                 justify-content: center; 
                 margin-top: 20px; 

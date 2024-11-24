@@ -513,27 +513,27 @@ function addTask() {
 
     if (taskInput.value.trim() !== '') {
         const newTaskLabel = document.createElement('label');
-        newTaskLabel.classList.add('fade-out'); // Add the fade-out class
+        newTaskLabel.classList.add('fade-out'); 
         newTaskLabel.innerHTML = `
             <input type="checkbox" onchange="removeTask(this)">
             ${taskInput.value}
         `;
         todoList.appendChild(newTaskLabel);
-        taskInput.value = ''; // Clear the input field
-        toggleInput(); // Hide the input field again
+        taskInput.value = ''; 
+        toggleInput(); 
     } else {
-        alert('Please enter a task.'); // Alert if input is empty
+        alert('Please enter a task.'); 
     }
 }
 
 function removeTask(checkbox) {
     const taskLabel = checkbox.parentElement;
-    taskLabel.classList.add('hidden'); // Start fade-out effect
+    taskLabel.classList.add('hidden'); 
 
-    // Wait for the animation to complete before removing the task
+    
     setTimeout(() => {
         taskLabel.remove();
-    }, 500); // Duration should match the CSS transition duration
+    }, 500); 
 }
 
        
