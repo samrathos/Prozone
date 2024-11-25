@@ -513,7 +513,7 @@ function addTask() {
 
     if (taskInput.value.trim() !== '') {
         const newTaskLabel = document.createElement('label');
-        newTaskLabel.classList.add('fade-out'); 
+        
         newTaskLabel.innerHTML = `
             <input type="checkbox" onchange="removeTask(this)">
             ${taskInput.value}
@@ -528,9 +528,6 @@ function addTask() {
 
 function removeTask(checkbox) {
     const taskLabel = checkbox.parentElement;
-    taskLabel.classList.add('hidden'); 
-
-    
     setTimeout(() => {
         taskLabel.remove();
     }, 500); 
